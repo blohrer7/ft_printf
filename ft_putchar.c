@@ -6,7 +6,7 @@
 /*   By: blohrer <blohrer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:54:22 by blohrer           #+#    #+#             */
-/*   Updated: 2024/10/29 15:14:25 by blohrer          ###   ########.fr       */
+/*   Updated: 2024/11/13 10:43:49 by blohrer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,15 @@
 
 static void	ft_putchar(char c, int *len)
 {
-	*len += write(1, &c, 1);
+	int	result;
+
+	result = write(1, &c, 1);
+	if (result == -1)
+	{
+		*len = -1;
+	}
+	else
+	{
+		*len += result;
+	}
 }
