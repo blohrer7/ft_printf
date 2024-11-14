@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_put_unsigned.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blohrer <blohrer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 15:31:10 by blohrer           #+#    #+#             */
-/*   Updated: 2024/11/14 08:55:36 by blohrer          ###   ########.fr       */
+/*   Created: 2024/11/14 07:34:23 by blohrer           #+#    #+#             */
+/*   Updated: 2024/11/14 08:55:27 by blohrer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puthex(unsigned long n, int uppercase, int *len)
+void ft_put_unsigned(unsigned int n, int *counter)
 {
-	if (*len == -1)
-		return ;
-	if (n >= 16)
-	{
-		ft_puthex(n / 16, uppercase, len);
-	}
-	if (uppercase)
-		ft_putchar("0123456789ABCDEF"[n % 16], len);
-	else
-		ft_putchar("0123456789abcdef"[n % 16], len);
+    if (*counter == -1)
+        return;
+    if (n >= 10)
+    {
+        ft_put_unsigned(n / 10, counter);
+        if (*counter == -1)
+            return;
+    }
+    ft_putchar((n % 10) + '0', counter);
 }

@@ -6,7 +6,7 @@
 #    By: blohrer <blohrer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 10:58:28 by blohrer           #+#    #+#              #
-#    Updated: 2024/10/29 11:01:44 by blohrer          ###   ########.fr        #
+#    Updated: 2024/11/14 08:20:48 by blohrer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,30 +15,30 @@ CC 		= gcc
 CFLAGS 	= -Wall -Wextra -Werror
 AR = ar
 
-SRC		=	
+CFILES =	ft_putchar.c \
+			ft_putstr.c \
+			ft_putnbr_fd.c \
+			ft_puthex.c \
+			ft_put_unsigned.c \
+			ft_put_pointer.c \
+			ft_printf.c \
 
-OBJ 	= $(SRC:.c=.o)
+OFILES = $(CFILES:.c=.o)
 
 all: $(NAME)
 
-bonus: $(BONUS:.c=.o)
-	ar -r $(NAME) $?
-
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+$(NAME): $(OFILES)
+	$(AR) rcs $(NAME) $(OFILES)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
+	$(CC) -c $(CFLAGS) $?
 
 clean:
 	rm -f $(OFILES)
 
-
 fclean: clean
 	rm -f $(NAME) $(OBFILES)
 
-
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

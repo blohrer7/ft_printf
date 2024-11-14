@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_put_pointer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blohrer <blohrer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 15:31:10 by blohrer           #+#    #+#             */
-/*   Updated: 2024/11/14 08:55:36 by blohrer          ###   ########.fr       */
+/*   Created: 2024/11/14 07:35:24 by blohrer           #+#    #+#             */
+/*   Updated: 2024/11/14 08:32:05 by blohrer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puthex(unsigned long n, int uppercase, int *len)
+void	ft_put_pointer(void *ptr, int *counter)
 {
-	if (*len == -1)
+	unsigned long	address;
+
+	address = (unsigned long) ptr;
+	ft_putstr("0x", counter);
+	if (*counter == -1)
 		return ;
-	if (n >= 16)
+	if (address == 0)
 	{
-		ft_puthex(n / 16, uppercase, len);
+		ft_putchar('0', counter);
+		return ;
 	}
-	if (uppercase)
-		ft_putchar("0123456789ABCDEF"[n % 16], len);
-	else
-		ft_putchar("0123456789abcdef"[n % 16], len);
+	ft_puthex(address, 0, counter);
 }
+
