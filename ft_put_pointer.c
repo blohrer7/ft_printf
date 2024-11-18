@@ -6,7 +6,7 @@
 /*   By: blohrer <blohrer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 07:35:24 by blohrer           #+#    #+#             */
-/*   Updated: 2024/11/14 08:32:05 by blohrer          ###   ########.fr       */
+/*   Updated: 2024/11/18 10:19:08 by blohrer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ void	ft_put_pointer(void *ptr, int *counter)
 	}
 	ft_puthex(address, 0, counter);
 }
-
